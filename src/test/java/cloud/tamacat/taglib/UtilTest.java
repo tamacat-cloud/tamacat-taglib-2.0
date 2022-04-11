@@ -1,4 +1,4 @@
-package org.tamacat.taglib;
+package cloud.tamacat.taglib;
 
 import static org.junit.Assert.*;
 

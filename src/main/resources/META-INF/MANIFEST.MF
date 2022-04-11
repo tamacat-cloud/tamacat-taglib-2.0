@@ -1,7 +1,7 @@
 Implementation-Title: tamacat-taglib
-Implementation-Version: 1.5-20220205
+Implementation-Version: 2.0-20220412
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.tamacat
+Bundle-SymbolicName: cloud.tamacat.taglib
 Bundle-Name: tamacat-taglib
 Bundle-Vendor: TAMACAT.ORG
-Bundle-Version: 1.5
+Bundle-Version: 2.0

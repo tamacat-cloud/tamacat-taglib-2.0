@@ -2,14 +2,14 @@
  * Copyright 2015 tamacat.org
  * All rights reserved.
  */
-package org.tamacat.taglib.input;
+package cloud.tamacat.taglib.input;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.tamacat.taglib.Util;
+import cloud.tamacat.taglib.Util;
 
 public class Attributes implements Serializable {
 	private static final long serialVersionUID = 1L;

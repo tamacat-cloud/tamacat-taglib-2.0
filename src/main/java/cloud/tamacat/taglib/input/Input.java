@@ -2,69 +2,42 @@
  * Copyright 2015 tamacat.org
  * All rights reserved.
  */
-package org.tamacat.taglib.input;
+package cloud.tamacat.taglib.input;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.BodyTagSupport;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspTagException;
+import jakarta.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
-import org.tamacat.taglib.Util;
-
-public class Textarea extends BodyTagSupport {
+public class Input extends TagSupport {
 
 	private static final long serialVersionUID = 1L;
-
 	protected Attributes attributes = new Attributes();
-
-	protected String cols;
-	protected String rows;
 	
+	@Override
 	public void release() {
-        super.release();
-		attributes.release();
-		cols = null;
-		rows = null;
-    }
+		super.release();
+		attributes.release();;
+	}
 
-    public int doEndTag() throws JspException {
-        try {
-            JspWriter out = pageContext.getOut();
+	@Override
+	public int doStartTag() throws JspException {
+		try {
+			JspWriter out = pageContext.getOut();
 			StringBuilder html = new StringBuilder();
-			html.append("<textarea ");
+			html.append("<input ");
 			html.append(attributes.createAttributes());
+			html.append(" />");
 			out.print(html.toString());
-			
-            if (cols != null) {
-                out.print(" cols=\"" + Util.escape(cols) + "\"");
-            }
-            if (rows != null) {
-                out.print(" rows=\"" + Util.escape(rows) + "\"");
-            }
-            out.print(">");
-
-            if (getBodyContent() != null
-                    && getBodyContent().getString() != null) {
-            	out.print(Util.escape(getBodyContent().getString()));
-            }
-            out.print("</textarea>");
-        } catch (Exception ex) {
-            throw new JspTagException(ex.getMessage());
-        } finally {
-        	release();
-        }
-        return EVAL_PAGE;
-    }
-    
-    public void setCols(String cols) {
-        this.cols = cols;
-    }
-
-    public void setRows(String rows) {
-        this.rows = rows;
-    }
-    
-    public void setType(String type) {
+		} catch (Exception ex) {
+			throw new JspTagException(ex.getMessage());
+		} finally {
+			release();
+		}
+		return SKIP_BODY;
+	}
+	
+	public void setType(String type) {
 		attributes.setType(type);
 	}
 	
